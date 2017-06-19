@@ -4,18 +4,18 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React from 'react';
-import { Scene, ActionConst } from 'react-native-router-flux';
+import React from 'react'
+import { Scene, ActionConst } from 'react-native-router-flux'
 
 // Consts and Libs
-import { AppConfig } from '@constants/';
+import { AppConfig } from '@constants/'
 
 // Scenes
-import Authenticate from '@containers/auth/AuthenticateView';
-import LoginForm from '@containers/auth/Forms/LoginContainer';
-import SignUpForm from '@containers/auth/Forms/SignUpContainer';
-import ResetPasswordForm from '@containers/auth/Forms/ResetPasswordContainer';
-import UpdateProfileForm from '@containers/auth/Forms/UpdateProfileContainer';
+import Authenticate from '@containers/auth/AuthenticateView'
+import LoginForm from '@containers/auth/Forms/LoginContainer'
+import SignUpForm from '@containers/auth/Forms/SignUpContainer'
+import ResetPasswordForm from '@containers/auth/Forms/ResetPasswordContainer'
+import UpdateProfileForm from '@containers/auth/Forms/UpdateProfileContainer'
 
 /* Routes ==================================================================== */
 const scenes = (
@@ -60,6 +60,6 @@ const scenes = (
       analyticsDesc={'Update Profile'}
     />
   </Scene>
-);
+)
 
-export default scenes;
+export default scenes

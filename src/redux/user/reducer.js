@@ -6,39 +6,39 @@
  */
 
 // Set initial state
-const initialState = {};
+const initialState = {}
 
-export default function userReducer(state = initialState, action) {
+export default function userReducer (state = initialState, action) {
   switch (action.type) {
     case 'USER_LOGIN': {
       if (action.data) {
-        const input = action.data;
+        const input = action.data
         return {
           ...state,
           uid: input.uid,
           email: input.email,
-          emailVerified: input.emailVerified,
-        };
+          emailVerified: input.emailVerified
+        }
       }
-      return {};
+      return {}
     }
     case 'USER_DETAILS_UPDATE': {
       if (action.data) {
-        const input = action.data;
+        const input = action.data
         return {
           ...state,
           firstName: input.firstName,
           lastName: input.lastName,
           signedUp: input.signedUp,
-          role: input.role,
-        };
+          role: input.role
+        }
       }
-      return {};
+      return {}
     }
     case 'USER_LOGOUT': {
-      return {};
+      return {}
     }
     default:
-      return state;
+      return state
   }
 }

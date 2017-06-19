@@ -2,11 +2,11 @@
  * Test to check if the component renders correctly
  */
 /* global it expect */
-import 'react-native';
-import React from 'react';
-import renderer from 'react-test-renderer';
+import 'react-native'
+import React from 'react'
+import renderer from 'react-test-renderer'
 
-import RecipeView from '@containers/recipes/RecipeView';
+import RecipeView from '@containers/recipes/RecipeView'
 
 it('RecipeView renders correctly', () => {
   const thisRecipe = {
@@ -15,12 +15,12 @@ it('RecipeView renders correctly', () => {
     body: 'Blah di blah lorem ipsum',
     image: 'http://placehold.it/300x100',
     ingredients: ['Hello world', 'Hello world', 'Hello world'],
-    method: ['And again', 'And again', 'And again'],
-  };
+    method: ['And again', 'And again', 'And again']
+  }
 
   const tree = renderer.create(
-    <RecipeView recipe={thisRecipe} />,
-  ).toJSON();
+    <RecipeView recipe={thisRecipe} />
+  ).toJSON()
 
-  expect(tree).toMatchSnapshot();
-});
+  expect(tree).toMatchSnapshot()
+})

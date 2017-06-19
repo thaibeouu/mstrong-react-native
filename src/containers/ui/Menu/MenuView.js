@@ -4,24 +4,24 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import {
   View,
   Alert,
   StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
-import { Actions } from 'react-native-router-flux';
+  TouchableOpacity
+} from 'react-native'
+import { Actions } from 'react-native-router-flux'
 
 // Consts and Libs
-import { AppStyles, AppSizes, AppColors } from '@theme/';
+import { AppStyles, AppSizes, AppColors } from '@theme/'
 
 // Components
-import { Spacer, Text, Button } from '@ui/';
+import { Spacer, Text, Button } from '@ui/'
 
 /* Styles ==================================================================== */
-const MENU_BG_COLOR = '#263137';
+const MENU_BG_COLOR = '#263137'
 
 const styles = StyleSheet.create({
   backgroundFill: {
@@ -30,17 +30,17 @@ const styles = StyleSheet.create({
     width: AppSizes.screen.width,
     position: 'absolute',
     top: 0,
-    left: 0,
+    left: 0
   },
   container: {
     position: 'relative',
-    flex: 1,
+    flex: 1
   },
   menuContainer: {
     flex: 1,
     left: 0,
     right: 0,
-    backgroundColor: MENU_BG_COLOR,
+    backgroundColor: MENU_BG_COLOR
   },
 
   // Main Menu
@@ -50,12 +50,12 @@ const styles = StyleSheet.create({
     right: 0,
     backgroundColor: MENU_BG_COLOR,
     padding: 20,
-    paddingTop: AppSizes.statusBarHeight + 20,
+    paddingTop: AppSizes.statusBarHeight + 20
   },
   menuItem: {
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(255, 255, 255, 0.1)',
-    paddingBottom: 10,
+    paddingBottom: 10
   },
   menuItem_text: {
     fontSize: 16,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     marginTop: 14,
     marginBottom: 8,
-    color: '#EEEFF0',
+    color: '#EEEFF0'
   },
 
   // Menu Bottom
@@ -72,12 +72,12 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     justifyContent: 'flex-end',
-    paddingBottom: 10,
+    paddingBottom: 10
   },
   menuBottom_text: {
-    color: '#EEEFF0',
-  },
-});
+    color: '#EEEFF0'
+  }
+})
 
 /* Component ==================================================================== */
 class Menu extends Component {
@@ -85,24 +85,24 @@ class Menu extends Component {
     logout: PropTypes.func.isRequired,
     closeSideMenu: PropTypes.func.isRequired,
     user: PropTypes.shape({
-      email: PropTypes.string,
+      email: PropTypes.string
     }),
     unauthMenu: PropTypes.arrayOf(PropTypes.shape({})),
-    authMenu: PropTypes.arrayOf(PropTypes.shape({})),
+    authMenu: PropTypes.arrayOf(PropTypes.shape({}))
   }
 
   static defaultProps = {
     user: null,
     unauthMenu: [],
-    authMenu: [],
+    authMenu: []
   }
 
   /**
    * On Press of any menu item
    */
   onPress = (action) => {
-    this.props.closeSideMenu();
-    if (action) action();
+    this.props.closeSideMenu()
+    if (action) action()
   }
 
   /**
@@ -112,11 +112,11 @@ class Menu extends Component {
     if (this.props.logout) {
       this.props.logout()
         .then(() => {
-          this.props.closeSideMenu();
-          Actions.login();
+          this.props.closeSideMenu()
+          Actions.login()
         }).catch(() => {
-          Alert.alert('Oh uh!', 'Something went wrong.');
-        });
+          Alert.alert('Oh uh!', 'Something went wrong.')
+        })
     }
   }
 
@@ -141,10 +141,10 @@ class Menu extends Component {
    */
   menuList = () => {
     // Determine which menu to use - authenticated user menu or unauthenicated version?
-    let menu = this.props.unauthMenu;
-    if (this.props.user && this.props.user.email) menu = this.props.authMenu;
+    let menu = this.props.unauthMenu
+    if (this.props.user && this.props.user.email) menu = this.props.authMenu
 
-    return menu.map(item => this.menuItem(item));
+    return menu.map(item => this.menuItem(item))
   }
 
   render = () => (
@@ -155,12 +155,12 @@ class Menu extends Component {
         <View style={[styles.menu]}>{this.menuList()}</View>
 
         <View style={[styles.menuBottom]}>
-          {this.props.user && this.props.user.email ?
-            <View>
+          {this.props.user && this.props.user.email
+            ? <View>
               <Text
                 style={[
                   styles.menuBottom_text,
-                  AppStyles.textCenterAligned,
+                  AppStyles.textCenterAligned
                 ]}
               >
                 Logged in as:{'\n'}
@@ -173,8 +173,7 @@ class Menu extends Component {
                 <Button small title={'Log Out'} onPress={this.logout} />
               </View>
             </View>
-          :
-            <View style={[AppStyles.paddingHorizontal, AppStyles.paddingVerticalSml]}>
+            : <View style={[AppStyles.paddingHorizontal, AppStyles.paddingVerticalSml]}>
               <Button small title={'Log In'} onPress={() => this.onPress(Actions.login)} />
             </View>
           }
@@ -185,4 +184,4 @@ class Menu extends Component {
 }
 
 /* Export Component ==================================================================== */
-export default Menu;
+export default Menu

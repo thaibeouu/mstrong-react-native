@@ -6,27 +6,27 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { FormLabel } from 'react-native-elements';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { FormLabel } from 'react-native-elements'
 
 // Consts and Libs
-import { AppColors, AppFonts } from '@theme/';
+import { AppColors, AppFonts } from '@theme/'
 
 /* Component ==================================================================== */
 class CustomFormLabel extends Component {
   static propTypes = {
     labelStyle: PropTypes.oneOfType([
       PropTypes.array,
-      PropTypes.shape({}),
+      PropTypes.shape({})
     ]),
-    children: PropTypes.node,
+    children: PropTypes.node
   }
 
   static defaultProps = {
     containerStyle: [],
     labelStyle: [],
-    children: null,
+    children: null
   }
 
   labelProps = () => {
@@ -37,19 +37,19 @@ class CustomFormLabel extends Component {
         color: AppColors.textPrimary,
         fontFamily: AppFonts.base.family,
         marginLeft: 0,
-        marginRight: 0,
-      }],
-    };
-
-    if (this.props.labelStyle) {
-      props.labelStyle.push(this.props.labelStyle);
+        marginRight: 0
+      }]
     }
 
-    return props;
+    if (this.props.labelStyle) {
+      props.labelStyle.push(this.props.labelStyle)
+    }
+
+    return props
   }
 
   render = () => <FormLabel {...this.labelProps()}>{this.props.children}</FormLabel>;
 }
 
 /* Export Component ==================================================================== */
-export default CustomFormLabel;
+export default CustomFormLabel

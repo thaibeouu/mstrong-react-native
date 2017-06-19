@@ -7,28 +7,28 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import {
   View,
   Image,
   Alert,
   StatusBar,
   StyleSheet,
-  ActivityIndicator,
-} from 'react-native';
-import { Actions } from 'react-native-router-flux';
+  ActivityIndicator
+} from 'react-native'
+import { Actions } from 'react-native-router-flux'
 
 // Consts and Libs
-import { AppStyles, AppSizes } from '@theme/';
+import { AppStyles, AppSizes } from '@theme/'
 
 /* Styles ==================================================================== */
 const styles = StyleSheet.create({
   launchImage: {
     width: AppSizes.screen.width,
-    height: AppSizes.screen.height,
-  },
-});
+    height: AppSizes.screen.height
+  }
+})
 
 /* Component ==================================================================== */
 class AppLaunch extends Component {
@@ -37,17 +37,17 @@ class AppLaunch extends Component {
   static propTypes = {
     login: PropTypes.func.isRequired,
     getRecipes: PropTypes.func.isRequired,
-    getMeals: PropTypes.func.isRequired,
+    getMeals: PropTypes.func.isRequired
   }
 
   componentDidMount = () => {
     // Show status bar on app launch
-    StatusBar.setHidden(false, true);
+    StatusBar.setHidden(false, true)
 
     // Preload content here
     Promise.all([
       this.props.getMeals(),
-      this.props.getRecipes(),
+      this.props.getRecipes()
     ]).then(() => {
       // Once we've preloaded basic content,
       // - Try to authenticate based on existing token
@@ -55,8 +55,8 @@ class AppLaunch extends Component {
         // Logged in, show index screen
         .then(() => Actions.app({ type: 'reset' }))
         // Not Logged in, show Login screen
-        .catch(() => Actions.authenticate({ type: 'reset' }));
-    }).catch(err => Alert.alert(err.message));
+        .catch(() => Actions.authenticate({ type: 'reset' }))
+    }).catch(err => Alert.alert(err.message))
   }
 
   render = () => (
@@ -76,4 +76,4 @@ class AppLaunch extends Component {
 }
 
 /* Export Component ==================================================================== */
-export default AppLaunch;
+export default AppLaunch

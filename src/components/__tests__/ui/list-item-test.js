@@ -2,11 +2,11 @@
  * Test to check if the component renders correctly
  */
 /* global it expect */
-import 'react-native';
-import React from 'react';
-import renderer from 'react-test-renderer';
+import 'react-native'
+import React from 'react'
+import renderer from 'react-test-renderer'
 
-import ListItem from '@ui/ListItem';
+import ListItem from '@ui/ListItem'
 
 it('ListItem renders correctly', () => {
   const tree = renderer.create(
@@ -15,8 +15,8 @@ it('ListItem renders correctly', () => {
       subTitle={'Sub title'}
       roundAvatar
       avatar={require('../../../image.png')}
-    />,
-  ).toJSON();
+    />
+  ).toJSON()
 
-  expect(tree).toMatchSnapshot();
-});
+  expect(tree).toMatchSnapshot()
+})

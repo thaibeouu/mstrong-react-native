@@ -4,27 +4,27 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 // Actions
-import * as RecipeActions from '@redux/recipes/actions';
+import * as RecipeActions from '@redux/recipes/actions'
 
 // Components
-import Loading from '@components/general/Loading';
-import RecipeListingRender from './ListingView';
+import Loading from '@components/general/Loading'
+import RecipeListingRender from './ListingView'
 
 /* Redux ==================================================================== */
 // What data from the store shall we send to the component?
 const mapStateToProps = state => ({
-  recipes: state.recipe.recipes || [],
-});
+  recipes: state.recipe.recipes || []
+})
 
 // Any actions to map to the component?
 const mapDispatchToProps = {
-  getRecipes: RecipeActions.getRecipes,
-};
+  getRecipes: RecipeActions.getRecipes
+}
 
 /* Component ==================================================================== */
 class MealListing extends Component {
@@ -33,16 +33,16 @@ class MealListing extends Component {
   static propTypes = {
     recipes: PropTypes.arrayOf(PropTypes.object),
     meal: PropTypes.string.isRequired,
-    getRecipes: PropTypes.func.isRequired,
+    getRecipes: PropTypes.func.isRequired
   }
 
   static defaultProps = {
-    recipes: [],
+    recipes: []
   }
 
   state = {
     loading: false,
-    recipes: [],
+    recipes: []
   }
 
   componentDidMount = () => this.getThisMealsRecipes(this.props.recipes);
@@ -55,13 +55,13 @@ class MealListing extends Component {
   getThisMealsRecipes = (allRecipes) => {
     if (allRecipes.length > 0) {
       const recipes = allRecipes.filter(recipe =>
-        recipe.category.toString() === this.props.meal.toString(),
-      );
+        recipe.category.toString() === this.props.meal.toString()
+      )
 
       this.setState({
         recipes,
-        loading: false,
-      });
+        loading: false
+      })
     }
   }
 
@@ -73,15 +73,15 @@ class MealListing extends Component {
     .catch(err => this.setState({ error: err.message, loading: false }))
 
   render = () => {
-    if (this.state.loading) return <Loading />;
+    if (this.state.loading) return <Loading />
 
     return (
       <RecipeListingRender
         recipes={this.state.recipes}
         reFetch={this.fetchRecipes}
       />
-    );
+    )
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MealListing);
+export default connect(mapStateToProps, mapDispatchToProps)(MealListing)

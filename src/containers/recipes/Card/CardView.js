@@ -5,29 +5,29 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import {
   View,
   StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
-import { Icon } from 'react-native-elements';
+  TouchableOpacity
+} from 'react-native'
+import { Icon } from 'react-native-elements'
 
 // Consts and Libs
-import { AppStyles } from '@theme/';
+import { AppStyles } from '@theme/'
 
 // Components
-import { Card, Text } from '@ui/';
+import { Card, Text } from '@ui/'
 
 /* Styles ==================================================================== */
 const styles = StyleSheet.create({
   favourite: {
     position: 'absolute',
     top: -45,
-    right: 0,
-  },
-});
+    right: 0
+  }
+})
 
 /* Component ==================================================================== */
 class RecipeCard extends Component {
@@ -39,17 +39,17 @@ class RecipeCard extends Component {
     body: PropTypes.string.isRequired,
     onPress: PropTypes.func,
     onPressFavourite: PropTypes.func,
-    isFavourite: PropTypes.bool,
+    isFavourite: PropTypes.bool
   }
 
   static defaultProps = {
     onPress: null,
     onPressFavourite: null,
-    isFavourite: null,
+    isFavourite: null
   }
 
   render = () => {
-    const { title, body, image, onPress, onPressFavourite, isFavourite } = this.props;
+    const { title, body, image, onPress, onPressFavourite, isFavourite } = this.props
 
     return (
       <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
@@ -69,7 +69,7 @@ class RecipeCard extends Component {
                   name={'star-border'}
                   color={isFavourite ? '#FFFFFF' : '#FDC12D'}
                   containerStyle={{
-                    backgroundColor: isFavourite ? '#FDC12D' : '#FFFFFF',
+                    backgroundColor: isFavourite ? '#FDC12D' : '#FFFFFF'
                   }}
                 />
               </TouchableOpacity>
@@ -77,9 +77,9 @@ class RecipeCard extends Component {
           </View>
         </Card>
       </TouchableOpacity>
-    );
+    )
   }
 }
 
 /* Export Component ==================================================================== */
-export default RecipeCard;
+export default RecipeCard

@@ -4,28 +4,28 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { Actions } from 'react-native-router-flux'
 
 // Actions
-import * as RecipeActions from '@redux/recipes/actions';
+import * as RecipeActions from '@redux/recipes/actions'
 
 // Components
-import RecipeCardRender from './CardView';
+import RecipeCardRender from './CardView'
 
 /* Redux ==================================================================== */
 // What data from the store shall we send to the component?
 const mapStateToProps = state => ({
   user: state.user,
-  favourites: (state.recipe && state.recipe.favourites) ? state.recipe.favourites : null,
-});
+  favourites: (state.recipe && state.recipe.favourites) ? state.recipe.favourites : null
+})
 
 // Any actions to map to the component?
 const mapDispatchToProps = {
-  replaceFavourites: RecipeActions.replaceFavourites,
-};
+  replaceFavourites: RecipeActions.replaceFavourites
+}
 
 /* Component ==================================================================== */
 class RecipeCard extends Component {
@@ -36,28 +36,28 @@ class RecipeCard extends Component {
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
-      image: PropTypes.string,
+      image: PropTypes.string
     }).isRequired,
     replaceFavourites: PropTypes.func.isRequired,
     favourites: PropTypes.arrayOf(PropTypes.number),
     user: PropTypes.shape({
-      uid: PropTypes.string,
-    }),
+      uid: PropTypes.string
+    })
   }
 
   static defaultProps = {
     favourites: null,
-    user: null,
+    user: null
   }
 
-  constructor(props) {
-    super(props);
-    this.state = { recipe: props.recipe };
+  constructor (props) {
+    super(props)
+    this.state = { recipe: props.recipe }
   }
 
-  componentWillReceiveProps(props) {
+  componentWillReceiveProps (props) {
     if (props.recipe) {
-      this.setState({ recipe: props.recipe });
+      this.setState({ recipe: props.recipe })
     }
   }
 
@@ -67,8 +67,8 @@ class RecipeCard extends Component {
   onPressCard = () => {
     Actions.recipeView({
       title: this.props.recipe.title,
-      recipe: this.props.recipe,
-    });
+      recipe: this.props.recipe
+    })
   }
 
   /**
@@ -76,23 +76,23 @@ class RecipeCard extends Component {
     */
   onPressFavourite = () => {
     if (this.props.user && this.props.user.uid) {
-      const recipeId = this.props.recipe.id;
+      const recipeId = this.props.recipe.id
 
       if (recipeId && this.props.replaceFavourites) {
-        const favs = this.props.favourites;
+        const favs = this.props.favourites
 
         // Toggle to/from current list
         if (this.isFavourite()) {
-          favs.splice(favs.indexOf(this.props.recipe.id), 1);
+          favs.splice(favs.indexOf(this.props.recipe.id), 1)
         } else {
-          favs.push(recipeId);
+          favs.push(recipeId)
         }
 
         // Send new list to API
-        this.props.replaceFavourites(favs);
+        this.props.replaceFavourites(favs)
 
         // Manually trigger a re-render - I wish I knew why this was required...
-        this.setState({ recipe: this.state.recipe });
+        this.setState({ recipe: this.state.recipe })
       }
     }
   }
@@ -101,18 +101,18 @@ class RecipeCard extends Component {
     * Check in Redux to find if this Recipe ID is a Favourite
     */
   isFavourite = () => {
-    const { favourites, recipe } = this.props;
+    const { favourites, recipe } = this.props
 
     if (recipe && recipe.id && favourites) {
-      if (favourites.length > 0 && favourites.indexOf(recipe.id) > -1) return true;
+      if (favourites.length > 0 && favourites.indexOf(recipe.id) > -1) return true
     }
 
-    return false;
+    return false
   }
 
   render = () => {
-    const { recipe } = this.state;
-    const { user } = this.props;
+    const { recipe } = this.state
+    const { user } = this.props
 
     return (
       <RecipeCardRender
@@ -123,9 +123,9 @@ class RecipeCard extends Component {
         onPressFavourite={(user && user.uid) ? this.onPressFavourite : null}
         isFavourite={(user && user.uid && this.isFavourite()) && true}
       />
-    );
+    )
   }
 }
 
 /* Export Component ==================================================================== */
-export default connect(mapStateToProps, mapDispatchToProps)(RecipeCard);
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeCard)

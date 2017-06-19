@@ -9,25 +9,25 @@
 export const initialState = {
   meals: [],
   recipes: [],
-  favourites: [],
-};
+  favourites: []
+}
 
-export default function recipeReducer(state = initialState, action) {
+export default function recipeReducer (state = initialState, action) {
   switch (action.type) {
     case 'FAVOURITES_REPLACE': {
       return {
         ...state,
-        favourites: action.data || [],
-      };
+        favourites: action.data || []
+      }
     }
     case 'MEALS_REPLACE': {
       return {
         ...state,
-        meals: action.data,
-      };
+        meals: action.data
+      }
     }
     case 'RECIPES_REPLACE': {
-      let recipes = [];
+      let recipes = []
 
       // Pick out the props I need
       if (action.data && typeof action.data === 'object') {
@@ -39,16 +39,16 @@ export default function recipeReducer(state = initialState, action) {
           image: item.image,
           author: item.author,
           ingredients: item.ingredients,
-          method: item.method,
-        }));
+          method: item.method
+        }))
       }
 
       return {
         ...state,
-        recipes,
-      };
+        recipes
+      }
     }
     default:
-      return state;
+      return state
   }
 }

@@ -10,9 +10,9 @@ const UTIL = {
     */
   objIsEmpty: (obj) => {
     if (typeof obj === 'object' && !(obj instanceof Array)) {
-      if (Object.keys(obj).length === 0) return true;
+      if (Object.keys(obj).length === 0) return true
     }
-    return false;
+    return false
   },
 
   /**
@@ -24,13 +24,13 @@ const UTIL = {
     * Limit characters, placing a ... at the end
     */
   limitChars: (str, limit = 15) => {
-    if (str.length > limit) return `${str.substr(0, limit).trim()} ...`;
-    return str;
-  },
-};
+    if (str.length > limit) return `${str.substr(0, limit).trim()} ...`
+    return str
+  }
+}
 
 /* Export ==================================================================== */
-module.exports = UTIL;
+module.exports = UTIL
 module.exports.details = {
-  title: 'UTIL',
-};
+  title: 'UTIL'
+}

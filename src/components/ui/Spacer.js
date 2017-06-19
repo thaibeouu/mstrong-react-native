@@ -6,9 +6,9 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { View } from 'react-native'
 
 /* Component ==================================================================== */
 const Spacer = ({ size }) => (
@@ -17,14 +17,14 @@ const Spacer = ({ size }) => (
       left: 0,
       right: 0,
       height: 1,
-      marginTop: size - 1,
+      marginTop: size - 1
     }}
   />
-);
+)
 
-Spacer.propTypes = { size: PropTypes.number };
-Spacer.defaultProps = { size: 10 };
-Spacer.componentName = 'Spacer';
+Spacer.propTypes = { size: PropTypes.number }
+Spacer.defaultProps = { size: 10 }
+Spacer.componentName = 'Spacer'
 
 /* Export Component ==================================================================== */
-export default Spacer;
+export default Spacer

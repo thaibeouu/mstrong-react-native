@@ -6,24 +6,24 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { List } from 'react-native-elements';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { List } from 'react-native-elements'
 
 // Consts and Libs
-import { AppColors } from '@theme/';
+import { AppColors } from '@theme/'
 
 /* Component ==================================================================== */
 class CustomList extends Component {
   static propTypes = {
     containerStyle: PropTypes.oneOfType([
       PropTypes.array,
-      PropTypes.shape({}),
-    ]),
+      PropTypes.shape({})
+    ])
   }
 
   static defaultProps = {
-    containerStyle: [],
+    containerStyle: []
   }
 
   listProps = () => {
@@ -34,19 +34,19 @@ class CustomList extends Component {
         margin: 0,
         backgroundColor: AppColors.background,
         borderTopColor: AppColors.border,
-        borderBottomWidth: 0,
-      }],
-    };
-
-    if (this.props.containerStyle) {
-      props.containerStyle.push(this.props.containerStyle);
+        borderBottomWidth: 0
+      }]
     }
 
-    return props;
+    if (this.props.containerStyle) {
+      props.containerStyle.push(this.props.containerStyle)
+    }
+
+    return props
   }
 
   render = () => <List {...this.listProps()} />;
 }
 
 /* Export Component ==================================================================== */
-export default CustomList;
+export default CustomList

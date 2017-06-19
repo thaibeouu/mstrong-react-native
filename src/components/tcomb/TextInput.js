@@ -4,16 +4,16 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React from 'react';
-import { View } from 'react-native';
+import React from 'react'
+import { View } from 'react-native'
 
 // Components
-import { FormInput, FormLabel, FormValidationMessage } from '@ui/';
+import { FormInput, FormLabel, FormValidationMessage } from '@ui/'
 
 /* Component ==================================================================== */
-function textbox(locals) {
+function textbox (locals) {
   if (locals.hidden) {
-    return null;
+    return null
   }
 
   return (
@@ -56,8 +56,8 @@ function textbox(locals) {
       />
       {!!locals.error && <FormValidationMessage>{locals.error}</FormValidationMessage>}
     </View>
-  );
+  )
 }
 
 /* Export Component ==================================================================== */
-module.exports = textbox;
+module.exports = textbox

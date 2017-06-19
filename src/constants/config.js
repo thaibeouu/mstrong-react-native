@@ -5,7 +5,7 @@
  * https://github.com/mcnamee/react-native-starter-app
  */
 /* global __DEV__ */
-import { AppColors, AppStyles, AppSizes } from '@theme/';
+import { AppColors, AppStyles, AppSizes } from '@theme/'
 
 export default {
   // App Details
@@ -30,7 +30,7 @@ export default {
     rightButtonIconStyle: AppStyles.navbarButton,
     sceneStyle: {
       backgroundColor: AppColors.background,
-      paddingTop: AppSizes.navbarHeight,
-    },
-  },
-};
+      paddingTop: AppSizes.navbarHeight
+    }
+  }
+}

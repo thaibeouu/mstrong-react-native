@@ -6,12 +6,12 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Button } from 'react-native-elements';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Button } from 'react-native-elements'
 
 // Consts and Libs
-import { AppColors, AppFonts, AppSizes } from '@theme/';
+import { AppColors, AppFonts, AppSizes } from '@theme/'
 
 /* Component ==================================================================== */
 class CustomButton extends Component {
@@ -22,8 +22,8 @@ class CustomButton extends Component {
     backgroundColor: PropTypes.string,
     onPress: PropTypes.func,
     icon: PropTypes.shape({
-      name: PropTypes.string,
-    }),
+      name: PropTypes.string
+    })
   }
 
   static defaultProps = {
@@ -32,7 +32,7 @@ class CustomButton extends Component {
     outlined: false,
     icon: {},
     backgroundColor: null,
-    onPress: null,
+    onPress: null
   }
 
   buttonProps = () => {
@@ -47,11 +47,11 @@ class CustomButton extends Component {
       borderRadius: AppSizes.borderRadius,
       raised: true,
       buttonStyle: {
-        padding: 12,
+        padding: 12
       },
       containerViewStyle: {
         marginLeft: 0,
-        marginRight: 0,
+        marginRight: 0
       },
       ...this.props,
       backgroundColor: this.props.backgroundColor || AppColors.brand.primary,
@@ -60,56 +60,56 @@ class CustomButton extends Component {
       icon: (this.props.icon && this.props.icon.name)
         ? {
           size: 14,
-          ...this.props.icon,
-        } : null,
-    };
+          ...this.props.icon
+        } : null
+    }
 
     // Overrides
     // Size
     if (this.props.small) {
-      props.fontSize = 12;
-      props.buttonStyle.padding = 8;
+      props.fontSize = 12
+      props.buttonStyle.padding = 8
 
       if (props.icon && props.icon.name) {
         props.icon = {
           size: 14,
-          ...props.icon,
-        };
+          ...props.icon
+        }
       }
     }
     if (this.props.large) {
-      props.fontSize = 20;
-      props.buttonStyle.padding = 15;
+      props.fontSize = 20
+      props.buttonStyle.padding = 15
 
       if (props.icon && props.icon.name) {
         props.icon = {
           size: 20,
-          ...props.icon,
-        };
+          ...props.icon
+        }
       }
     }
 
     // Outlined
     if (this.props.outlined) {
-      props.raised = false;
-      props.backgroundColor = this.props.backgroundColor || 'transparent';
-      props.color = AppColors.brand.primary;
-      props.buttonStyle.borderWidth = 1;
-      props.buttonStyle.borderColor = AppColors.brand.primary;
+      props.raised = false
+      props.backgroundColor = this.props.backgroundColor || 'transparent'
+      props.color = AppColors.brand.primary
+      props.buttonStyle.borderWidth = 1
+      props.buttonStyle.borderColor = AppColors.brand.primary
 
       if (props.icon && props.icon.name) {
         props.icon = {
           color: AppColors.brand.primary,
-          ...props.icon,
-        };
+          ...props.icon
+        }
       }
     }
 
-    return props;
+    return props
   }
 
   render = () => <Button {...this.buttonProps()} />;
 }
 
 /* Export Component ==================================================================== */
-export default CustomButton;
+export default CustomButton

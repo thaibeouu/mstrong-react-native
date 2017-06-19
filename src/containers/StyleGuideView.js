@@ -4,21 +4,21 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   View,
   Alert,
   ListView,
   ScrollView,
   StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
-import { TabViewAnimated, TabBar } from 'react-native-tab-view';
-import { SocialIcon } from 'react-native-elements';
-import { Actions } from 'react-native-router-flux';
+  TouchableOpacity
+} from 'react-native'
+import { TabViewAnimated, TabBar } from 'react-native-tab-view'
+import { SocialIcon } from 'react-native-elements'
+import { Actions } from 'react-native-router-flux'
 
 // Consts and Libs
-import { AppColors, AppStyles } from '@theme/';
+import { AppColors, AppStyles } from '@theme/'
 
 // Components
 import {
@@ -30,8 +30,8 @@ import {
   List,
   ListItem,
   FormInput,
-  FormLabel,
-} from '@components/ui/';
+  FormLabel
+} from '@components/ui/'
 
 // Example Data
 const dummyData1 = [
@@ -39,64 +39,64 @@ const dummyData1 = [
   { title: 'Alarms', icon: 'alarm' },
   { title: 'Cards', icon: 'card-membership' },
   { title: 'Favourites', icon: 'grade' },
-  { title: 'Help', icon: 'help' },
-];
+  { title: 'Help', icon: 'help' }
+]
 
 const dummyData2 = [
   {
     title: 'Jim Collins',
     role: 'Vice President',
-    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/arashmil/128.jpg',
+    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/arashmil/128.jpg'
   },
   {
     title: 'Sarah Franklin',
     role: 'Vice Chairman',
-    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg',
+    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg'
   },
   {
     title: 'James Fringe',
     role: 'CEO',
-    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/sindresorhus/128.jpg',
+    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/sindresorhus/128.jpg'
   },
   {
     title: 'Janice Overton',
     role: 'Lead Developer',
-    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/jina/128.jpg',
+    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/jina/128.jpg'
   },
   {
     title: 'Lisa Smith',
     role: 'CTO',
-    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/vista/128.jpg',
-  },
-];
+    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/vista/128.jpg'
+  }
+]
 
 /* Styles ==================================================================== */
 const styles = StyleSheet.create({
   // Tab Styles
   tabContainer: {
-    flex: 1,
+    flex: 1
   },
   tabbar: {
-    backgroundColor: AppColors.brand.primary,
+    backgroundColor: AppColors.brand.primary
   },
   tabbarIndicator: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#FFF'
   },
   tabbar_text: {
-    color: '#FFF',
-  },
-});
+    color: '#FFF'
+  }
+})
 
 /* Component ==================================================================== */
 class StyleGuide extends Component {
   static componentName = 'StyleGuide';
 
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     // Setup ListViews
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-    const ds2 = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+    const ds2 = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
 
     this.state = {
       navigation: {
@@ -106,12 +106,12 @@ class StyleGuide extends Component {
           { key: '1', title: 'Buttons' },
           { key: '2', title: 'Basics' },
           { key: '3', title: 'Cards' },
-          { key: '4', title: 'Form' },
-        ],
+          { key: '4', title: 'Form' }
+        ]
       },
       dataSource: ds.cloneWithRows(dummyData1),
-      dataSource2: ds2.cloneWithRows(dummyData2),
-    };
+      dataSource2: ds2.cloneWithRows(dummyData2)
+    }
   }
 
   /**
@@ -119,8 +119,8 @@ class StyleGuide extends Component {
     */
   handleChangeTab = (index) => {
     this.setState({
-      navigation: { ...this.state.navigation, index },
-    });
+      navigation: { ...this.state.navigation, index }
+    })
   }
 
   /**
@@ -169,7 +169,7 @@ class StyleGuide extends Component {
               </List>
             </ScrollView>
           </View>
-        );
+        )
       case '1' :
         return (
           <View style={styles.tabContainer}>
@@ -243,7 +243,7 @@ class StyleGuide extends Component {
               </Card>
             </ScrollView>
           </View>
-        );
+        )
       case '2' :
         return (
           <View style={styles.tabContainer}>
@@ -283,7 +283,7 @@ class StyleGuide extends Component {
               </Card>
             </ScrollView>
           </View>
-        );
+        )
       case '3' :
         return (
           <View style={styles.tabContainer}>
@@ -329,7 +329,7 @@ class StyleGuide extends Component {
               </TouchableOpacity>
             </ScrollView>
           </View>
-        );
+        )
       case '4' :
         return (
           <View style={styles.tabContainer}>
@@ -348,11 +348,11 @@ class StyleGuide extends Component {
               </View>
             </ScrollView>
           </View>
-        );
+        )
       default :
         return (
           <View />
-        );
+        )
     }
   }
 
@@ -382,4 +382,4 @@ class StyleGuide extends Component {
 }
 
 /* Export Component ==================================================================== */
-export default StyleGuide;
+export default StyleGuide

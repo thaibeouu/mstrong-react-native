@@ -13,5 +13,5 @@ export default {
 
   // Recipes
   recipe404: 'No recipes found',
-  missingMealId: 'Missing meal definition',
-};
+  missingMealId: 'Missing meal definition'
+}

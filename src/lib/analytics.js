@@ -4,13 +4,13 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
+import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge'
 
 // Consts and Libs
-import { AppConfig } from '@constants/';
+import { AppConfig } from '@constants/'
 
 // Google Analytics
-const GoogleAnalytics = new GoogleAnalyticsTracker(AppConfig.gaTrackingId);
+const GoogleAnalytics = new GoogleAnalyticsTracker(AppConfig.gaTrackingId)
 
 const track = store => next => (action) => {
   // Track each screen view to Redux
@@ -21,20 +21,20 @@ const track = store => next => (action) => {
         try {
           const screenName = (action.scene.title)
             ? `${action.scene.analyticsDesc} - ${action.scene.title}`
-            : action.scene.analyticsDesc;
+            : action.scene.analyticsDesc
 
           // Send to Google Analytics
-          GoogleAnalytics.trackScreenView(screenName);
+          GoogleAnalytics.trackScreenView(screenName)
         } catch (err) {
-          console.log(store);
-          console.log(err);
+          console.log(store)
+          console.log(err)
         }
       }
-      break;
+      break
 
     default :
   }
-  return next(action);
-};
+  return next(action)
+}
 
-export default track;
+export default track

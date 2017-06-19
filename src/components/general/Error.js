@@ -6,16 +6,16 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { View } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { View } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 // Consts and Libs
-import { AppStyles } from '@theme/';
+import { AppStyles } from '@theme/'
 
 // Components
-import { Spacer, Text, Button } from '@ui/';
+import { Spacer, Text, Button } from '@ui/'
 
 /* Component ==================================================================== */
 const Error = ({ text, tryAgain }) => (
@@ -37,11 +37,11 @@ const Error = ({ text, tryAgain }) => (
       />
     }
   </View>
-);
+)
 
-Error.propTypes = { text: PropTypes.string, tryAgain: PropTypes.func };
-Error.defaultProps = { text: 'Woops, Something went wrong.', tryAgain: null };
-Error.componentName = 'Error';
+Error.propTypes = { text: PropTypes.string, tryAgain: PropTypes.func }
+Error.defaultProps = { text: 'Woops, Something went wrong.', tryAgain: null }
+Error.componentName = 'Error'
 
 /* Export Component ==================================================================== */
-export default Error;
+export default Error

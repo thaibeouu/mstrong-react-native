@@ -5,23 +5,23 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import {
   View,
   ListView,
-  RefreshControl,
-} from 'react-native';
+  RefreshControl
+} from 'react-native'
 
 // Consts and Libs
-import { AppColors, AppStyles } from '@theme/';
-import { ErrorMessages } from '@constants/';
+import { AppColors, AppStyles } from '@theme/'
+import { ErrorMessages } from '@constants/'
 
 // Containers
-import RecipeCard from '@containers/recipes/Card/CardContainer';
+import RecipeCard from '@containers/recipes/Card/CardContainer'
 
 // Components
-import Error from '@components/general/Error';
+import Error from '@components/general/Error'
 
 /* Component ==================================================================== */
 class RecipeListing extends Component {
@@ -29,29 +29,29 @@ class RecipeListing extends Component {
 
   static propTypes = {
     recipes: PropTypes.arrayOf(PropTypes.object).isRequired,
-    reFetch: PropTypes.func,
+    reFetch: PropTypes.func
   }
 
   static defaultProps = {
-    reFetch: null,
+    reFetch: null
   }
 
-  constructor() {
-    super();
+  constructor () {
+    super()
 
     this.state = {
       isRefreshing: true,
       dataSource: new ListView.DataSource({
-        rowHasChanged: (row1, row2) => row1 !== row2,
-      }),
-    };
+        rowHasChanged: (row1, row2) => row1 !== row2
+      })
+    }
   }
 
-  componentWillReceiveProps(props) {
+  componentWillReceiveProps (props) {
     this.setState({
       dataSource: this.state.dataSource.cloneWithRows(props.recipes),
-      isRefreshing: false,
-    });
+      isRefreshing: false
+    })
   }
 
   /**
@@ -59,21 +59,21 @@ class RecipeListing extends Component {
     */
   reFetch = () => {
     if (this.props.reFetch) {
-      this.setState({ isRefreshing: true });
+      this.setState({ isRefreshing: true })
 
       this.props.reFetch()
         .then(() => {
-          this.setState({ isRefreshing: false });
-        });
+          this.setState({ isRefreshing: false })
+        })
     }
   }
 
   render = () => {
-    const { recipes } = this.props;
-    const { isRefreshing, dataSource } = this.state;
+    const { recipes } = this.props
+    const { isRefreshing, dataSource } = this.state
 
     if (!isRefreshing && (!recipes || recipes.length < 1)) {
-      return <Error text={ErrorMessages.recipe404} />;
+      return <Error text={ErrorMessages.recipe404} />
     }
 
     return (
@@ -84,19 +84,19 @@ class RecipeListing extends Component {
           dataSource={dataSource}
           automaticallyAdjustContentInsets={false}
           refreshControl={
-            this.props.reFetch ?
-              <RefreshControl
+            this.props.reFetch
+              ? <RefreshControl
                 refreshing={isRefreshing}
                 onRefresh={this.reFetch}
                 tintColor={AppColors.brand.primary}
               />
-            : null
+              : null
           }
         />
       </View>
-    );
+    )
   }
 }
 
 /* Export Component ==================================================================== */
-export default RecipeListing;
+export default RecipeListing

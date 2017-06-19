@@ -6,35 +6,35 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   View,
   Image,
-  StyleSheet,
-} from 'react-native';
-import { Actions } from 'react-native-router-flux';
+  StyleSheet
+} from 'react-native'
+import { Actions } from 'react-native-router-flux'
 
 // Consts and Libs
-import { AppStyles, AppSizes, AppColors } from '@theme/';
+import { AppStyles, AppSizes, AppColors } from '@theme/'
 
 // Components
-import { Spacer, Text, Button } from '@ui/';
+import { Spacer, Text, Button } from '@ui/'
 
 /* Styles ==================================================================== */
 const styles = StyleSheet.create({
   background: {
     backgroundColor: AppColors.brand.primary,
     height: AppSizes.screen.height,
-    width: AppSizes.screen.width,
+    width: AppSizes.screen.width
   },
   logo: {
     width: AppSizes.screen.width * 0.85,
-    resizeMode: 'contain',
+    resizeMode: 'contain'
   },
   whiteText: {
-    color: '#FFF',
-  },
-});
+    color: '#FFF'
+  }
+})
 
 /* Component ==================================================================== */
 class Authenticate extends Component {
@@ -99,4 +99,4 @@ class Authenticate extends Component {
 }
 
 /* Export Component ==================================================================== */
-export default Authenticate;
+export default Authenticate

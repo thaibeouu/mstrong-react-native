@@ -5,9 +5,9 @@
  * https://github.com/mcnamee/react-native-starter-app
  */
 
-import AppColors from './colors';
-import AppFonts from './fonts';
-import AppStyles from './styles';
-import AppSizes from './sizes';
+import AppColors from './colors'
+import AppFonts from './fonts'
+import AppStyles from './styles'
+import AppSizes from './sizes'
 
-export { AppColors, AppFonts, AppStyles, AppSizes };
+export { AppColors, AppFonts, AppStyles, AppSizes }

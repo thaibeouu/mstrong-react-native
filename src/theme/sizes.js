@@ -4,11 +4,11 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import { Dimensions, Platform } from 'react-native';
+import { Dimensions, Platform } from 'react-native'
 
-const { width, height } = Dimensions.get('window');
-const screenHeight = width < height ? height : width;
-const screenWidth = width < height ? width : height;
+const { width, height } = Dimensions.get('window')
+const screenHeight = width < height ? height : width
+const screenWidth = width < height ? width : height
 
 export default {
   // Window Dimensions
@@ -20,7 +20,7 @@ export default {
     widthThird: screenWidth * 0.333,
     widthTwoThirds: screenWidth * 0.666,
     widthQuarter: screenWidth * 0.25,
-    widthThreeQuarters: screenWidth * 0.75,
+    widthThreeQuarters: screenWidth * 0.75
   },
   navbarHeight: (Platform.OS === 'ios') ? 64 : 54,
   statusBarHeight: (Platform.OS === 'ios') ? 16 : 0,
@@ -29,5 +29,5 @@ export default {
   padding: 20,
   paddingSml: 10,
 
-  borderRadius: 2,
-};
+  borderRadius: 2
+}

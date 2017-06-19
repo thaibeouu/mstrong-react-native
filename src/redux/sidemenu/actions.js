@@ -5,20 +5,20 @@
  * https://github.com/mcnamee/react-native-starter-app
  */
 
-export function toggle() {
+export function toggle () {
   return {
-    type: 'SIDEMENU_TOGGLE',
-  };
+    type: 'SIDEMENU_TOGGLE'
+  }
 }
 
-export function open() {
+export function open () {
   return {
-    type: 'SIDEMENU_OPEN',
-  };
+    type: 'SIDEMENU_OPEN'
+  }
 }
 
-export function close() {
+export function close () {
   return {
-    type: 'SIDEMENU_CLOSE',
-  };
+    type: 'SIDEMENU_CLOSE'
+  }
 }

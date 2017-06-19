@@ -6,34 +6,34 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { ListItem } from 'react-native-elements';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { ListItem } from 'react-native-elements'
 
 // Consts and Libs
-import { AppColors, AppStyles } from '@theme/';
+import { AppColors, AppStyles } from '@theme/'
 
 /* Component ==================================================================== */
 class CustomListItem extends Component {
   static propTypes = {
     containerStyle: PropTypes.oneOfType([
       PropTypes.array,
-      PropTypes.shape({}),
+      PropTypes.shape({})
     ]),
     titleStyle: PropTypes.oneOfType([
       PropTypes.array,
-      PropTypes.shape({}),
+      PropTypes.shape({})
     ]),
     subtitleStyle: PropTypes.oneOfType([
       PropTypes.array,
-      PropTypes.shape({}),
-    ]),
+      PropTypes.shape({})
+    ])
   }
 
   static defaultProps = {
     containerStyle: [],
     titleStyle: [],
-    subtitleStyle: [],
+    subtitleStyle: []
   }
 
   listItemProps = () => {
@@ -46,29 +46,29 @@ class CustomListItem extends Component {
       containerStyle: [{
         backgroundColor: AppColors.listItemBackground,
         borderTopColor: AppColors.border,
-        borderBottomColor: AppColors.border,
+        borderBottomColor: AppColors.border
       }],
       titleStyle: [AppStyles.baseText],
-      subtitleStyle: [AppStyles.subtext],
-    };
+      subtitleStyle: [AppStyles.subtext]
+    }
 
     if (this.props.containerStyle) {
-      props.containerStyle.push(this.props.containerStyle);
+      props.containerStyle.push(this.props.containerStyle)
     }
 
     if (this.props.titleStyle) {
-      props.titleStyle.push(this.props.titleStyle);
+      props.titleStyle.push(this.props.titleStyle)
     }
 
     if (this.props.subtitleStyle) {
-      props.subtitleStyle.push(this.props.subtitleStyle);
+      props.subtitleStyle.push(this.props.subtitleStyle)
     }
 
-    return props;
+    return props
   }
 
   render = () => <ListItem {...this.listItemProps()} />;
 }
 
 /* Export Component ==================================================================== */
-export default CustomListItem;
+export default CustomListItem

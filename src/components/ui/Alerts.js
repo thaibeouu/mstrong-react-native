@@ -10,21 +10,21 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 import {
   View,
-  StyleSheet,
-} from 'react-native';
+  StyleSheet
+} from 'react-native'
 
 // Components
-import { Spacer, Text } from '@ui/';
+import { Spacer, Text } from '@ui/'
 
 /* Styles ==================================================================== */
 const styles = StyleSheet.create({
   alerts: {
     left: 0,
-    right: 0,
+    right: 0
   },
 
   // Success
@@ -35,32 +35,32 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderLeftWidth: 3,
     borderColor: '#1C854C',
-    backgroundColor: '#59DC9A',
+    backgroundColor: '#59DC9A'
   },
   msg_text: {
     textAlign: 'center',
     color: '#16693c',
-    fontWeight: '500',
+    fontWeight: '500'
   },
 
   // Error
   msgError: {
     borderColor: '#C02827',
-    backgroundColor: '#FB6567',
+    backgroundColor: '#FB6567'
   },
   msgError_text: {
-    color: '#7f1a1a',
+    color: '#7f1a1a'
   },
 
   // Status
   msgStatus: {
     borderColor: '#408491',
-    backgroundColor: '#8EDBE5',
+    backgroundColor: '#8EDBE5'
   },
   msgStatus_text: {
-    color: '#2f606a',
-  },
-});
+    color: '#2f606a'
+  }
+})
 
 /* Component ==================================================================== */
 const Alerts = ({ status, success, error }) => (
@@ -91,7 +91,7 @@ const Alerts = ({ status, success, error }) => (
           <Text
             style={[
               styles.msg_text,
-              styles.msgError_text,
+              styles.msgError_text
             ]}
           >
             {error}
@@ -101,21 +101,21 @@ const Alerts = ({ status, success, error }) => (
       </View>
     }
   </View>
-);
+)
 
 Alerts.propTypes = {
   status: PropTypes.string,
   success: PropTypes.string,
-  error: PropTypes.string,
-};
+  error: PropTypes.string
+}
 
 Alerts.defaultProps = {
   status: '',
   success: '',
-  error: '',
-};
+  error: ''
+}
 
-Alerts.componentName = 'Alerts';
+Alerts.componentName = 'Alerts'
 
 /* Export Component ==================================================================== */
-export default Alerts;
+export default Alerts
