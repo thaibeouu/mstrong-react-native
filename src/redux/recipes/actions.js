@@ -84,3 +84,23 @@ export function getRecipes () {
     })
   }
 }
+
+/**
+  * Get Ratings
+  */
+export function getRatings () {
+  return (dispatch) => {
+    return new Firebase.Promise((resolve) => {
+      const ref = FirebaseRef.child('ratings')
+
+      return ref.on('value', (snapshot) => {
+        const ratings = snapshot.val() || {}
+
+        return resolve(dispatch({
+          type: 'RATINGS_REPLACE',
+          data: ratings
+        }))
+      })
+    })
+  }
+}

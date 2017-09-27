@@ -12,8 +12,7 @@ import {
   StyleSheet,
   TouchableOpacity
 } from 'react-native'
-import { Icon } from 'react-native-elements'
-
+import { Icon, Rating } from 'react-native-elements'
 // Consts and Libs
 import { AppStyles } from '@theme/'
 
@@ -39,7 +38,8 @@ class RecipeCard extends Component {
     body: PropTypes.string.isRequired,
     onPress: PropTypes.func,
     onPressFavourite: PropTypes.func,
-    isFavourite: PropTypes.bool
+    isFavourite: PropTypes.bool,
+    price: PropTypes.string
   }
 
   static defaultProps = {
@@ -49,14 +49,22 @@ class RecipeCard extends Component {
   }
 
   render = () => {
-    const { title, body, image, onPress, onPressFavourite, isFavourite } = this.props
+    const { title, image, onPress, onPressFavourite, isFavourite, price } = this.props
 
     return (
       <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
         <Card image={image && { uri: image }}>
           <View style={[AppStyles.paddingBottomSml]}>
             <Text h3>{title}</Text>
-            <Text>{body}</Text>
+            <Text>{price}</Text>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', paddingVertical: 10, alignItems: 'flex-end' }} >
+            <Rating
+              startingValue={4}
+              readonly
+              imageSize={20}
+            />
+            <Text style={{ color: '#777' }}>{'  0 ratings'}</Text>
+            </View>
 
             {!!onPressFavourite &&
               <TouchableOpacity
@@ -65,11 +73,12 @@ class RecipeCard extends Component {
                 style={[styles.favourite]}
               >
                 <Icon
+                  type="material-community"
                   raised
-                  name={'star-border'}
-                  color={isFavourite ? '#FFFFFF' : '#FDC12D'}
+                  name={'heart-outline'}
+                  color={isFavourite ? '#FFFFFF' : '#fd0a2a'}
                   containerStyle={{
-                    backgroundColor: isFavourite ? '#FDC12D' : '#FFFFFF'
+                    backgroundColor: isFavourite ? '#fd0a2a' : '#FFFFFF'
                   }}
                 />
               </TouchableOpacity>

@@ -16,6 +16,7 @@ import LoginForm from '@containers/auth/Forms/LoginContainer'
 import SignUpForm from '@containers/auth/Forms/SignUpContainer'
 import ResetPasswordForm from '@containers/auth/Forms/ResetPasswordContainer'
 import UpdateProfileForm from '@containers/auth/Forms/UpdateProfileContainer'
+import AppointmentView from '@containers/recipes/AppointmentView'
 
 /* Routes ==================================================================== */
 const scenes = (
@@ -59,6 +60,15 @@ const scenes = (
       component={UpdateProfileForm}
       analyticsDesc={'Update Profile'}
     />
+  <Scene
+      {...AppConfig.navbarProps}
+      key={'viewAppointments'}
+      title={'Appointments'}
+      clone
+      component={AppointmentView}
+      analyticsDesc={'View Apps'}
+    />
+
   </Scene>
 )
 

@@ -23,7 +23,7 @@ import { Spacer, Text, Button } from '@ui/'
 /* Styles ==================================================================== */
 const styles = StyleSheet.create({
   background: {
-    backgroundColor: AppColors.brand.primary,
+    backgroundColor: AppColors.cardBackground,
     height: AppSizes.screen.height,
     width: AppSizes.screen.width
   },
@@ -43,7 +43,7 @@ class Authenticate extends Component {
   render = () => (
     <View style={[AppStyles.containerCentered, AppStyles.container, styles.background]}>
       <Image
-        source={require('../../images/logo.png')}
+        source={require('../../images/logo.jpg')}
         style={[styles.logo]}
       />
 
@@ -53,7 +53,7 @@ class Authenticate extends Component {
             title={'Login'}
             icon={{ name: 'lock' }}
             onPress={Actions.login}
-            backgroundColor={'#CB009E'}
+            backgroundColor={'#139aff'}
           />
         </View>
       </View>
@@ -66,29 +66,16 @@ class Authenticate extends Component {
             title={'Sign up'}
             icon={{ name: 'face' }}
             onPress={Actions.signUp}
-            backgroundColor={'#CB009E'}
+            backgroundColor={'#139aff'}
           />
         </View>
       </View>
 
-      <Spacer size={15} />
-
-      <Text p style={[AppStyles.textCenterAligned, styles.whiteText]}>
-        - or -
-      </Text>
-
-      <Spacer size={10} />
+      <Spacer size={25} />
 
       <View style={[AppStyles.row, AppStyles.paddingHorizontal]}>
         <View style={[AppStyles.flex1]} />
         <View style={[AppStyles.flex2]}>
-          <Button
-            small
-            title={'Skip'}
-            onPress={Actions.app}
-            raised={false}
-            backgroundColor={'rgba(255,255,255,0.2)'}
-          />
         </View>
         <View style={[AppStyles.flex1]} />
       </View>

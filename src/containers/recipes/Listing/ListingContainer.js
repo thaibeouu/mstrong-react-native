@@ -15,6 +15,7 @@ import * as RecipeActions from '@redux/recipes/actions'
 import Loading from '@components/general/Loading'
 import RecipeListingRender from './ListingView'
 
+import { Card, Spacer, Text } from '@ui/'
 /* Redux ==================================================================== */
 // What data from the store shall we send to the component?
 const mapStateToProps = state => ({
@@ -33,7 +34,8 @@ class MealListing extends Component {
   static propTypes = {
     recipes: PropTypes.arrayOf(PropTypes.object),
     meal: PropTypes.string.isRequired,
-    getRecipes: PropTypes.func.isRequired
+    getRecipes: PropTypes.func.isRequired,
+    search: PropTypes.string
   }
 
   static defaultProps = {

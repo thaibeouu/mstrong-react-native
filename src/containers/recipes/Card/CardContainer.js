@@ -36,7 +36,8 @@ class RecipeCard extends Component {
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
-      image: PropTypes.string
+      image: PropTypes.string,
+      price: PropTypes.string
     }).isRequired,
     replaceFavourites: PropTypes.func.isRequired,
     favourites: PropTypes.arrayOf(PropTypes.number),
@@ -97,6 +98,26 @@ class RecipeCard extends Component {
     }
   }
 
+  onPressRating = () => {
+    if (this.props.user && this.props.user.uid) {
+      const recipeId = this.props.recipe.id
+      const favs = this.props.favourites
+
+        // Toggle to/from current list
+      if (this.isFavourite()) {
+        favs.splice(favs.indexOf(this.props.recipe.id), 1)
+      } else {
+        favs.push(recipeId)
+      }
+
+        // Send new list to API
+      this.props.replaceFavourites(favs)
+
+        // Manually trigger a re-render - I wish I knew why this was required...
+      this.setState({ recipe: this.state.recipe })
+    }
+  }
+
   /**
     * Check in Redux to find if this Recipe ID is a Favourite
     */
@@ -122,6 +143,7 @@ class RecipeCard extends Component {
         onPress={this.onPressCard}
         onPressFavourite={(user && user.uid) ? this.onPressFavourite : null}
         isFavourite={(user && user.uid && this.isFavourite()) && true}
+        price={recipe.price}
       />
     )
   }

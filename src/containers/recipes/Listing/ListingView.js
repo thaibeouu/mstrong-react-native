@@ -2,6 +2,7 @@
  * Recipe Listing Screen
  *  - Shows a list of receipes
  *
+ *
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
@@ -12,6 +13,9 @@ import {
   ListView,
   RefreshControl
 } from 'react-native'
+import { SearchBar } from 'react-native-elements'
+
+import { Card, Spacer, Text } from '@ui/'
 
 // Consts and Libs
 import { AppColors, AppStyles } from '@theme/'
@@ -68,9 +72,20 @@ class RecipeListing extends Component {
     }
   }
 
+  doSearching (txt) {
+    if (txt !== '') {
+      let newRecipes = this.props.recipes.filter(rp => (rp.title.toLowerCase().indexOf(txt.toLowerCase()) !== -1) || rp.ingredients.join('|').toLowerCase().indexOf(txt.toLowerCase()) !== -1)
+      let dataSource = this.state.dataSource.cloneWithRows(newRecipes)
+      this.setState({dataSource: dataSource})
+    } else {
+      let dataSource = this.state.dataSource.cloneWithRows(this.props.recipes)
+      this.setState({dataSource: dataSource})
+    }
+    // this.setState({recipes: newRecipes})
+  }
   render = () => {
-    const { recipes } = this.props
-    const { isRefreshing, dataSource } = this.state
+    let { recipes } = this.props
+    let { isRefreshing, dataSource } = this.state
 
     if (!isRefreshing && (!recipes || recipes.length < 1)) {
       return <Error text={ErrorMessages.recipe404} />
@@ -78,6 +93,10 @@ class RecipeListing extends Component {
 
     return (
       <View style={[AppStyles.container]}>
+        <SearchBar
+          lightTheme
+          placeholder='Type Here...'
+          onChangeText={(txt) => this.doSearching(txt)}/>
         <ListView
           initialListSize={5}
           renderRow={recipe => <RecipeCard recipe={recipe} />}
@@ -93,6 +112,7 @@ class RecipeListing extends Component {
               : null
           }
         />
+        <Spacer size={20} />
       </View>
     )
   }

@@ -8,8 +8,8 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View } from 'react-native'
-
+import { View, StyleSheet } from 'react-native'
+import { Firebase, FirebaseRef } from '@constants/'
 // Consts and Libs
 import { AppStyles } from '@theme/'
 
@@ -17,8 +17,21 @@ import { AppStyles } from '@theme/'
 import { Text } from '@ui/'
 
 /* Component ==================================================================== */
+const styles = StyleSheet.create({
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    height: 200,
+    width: 200,
+    justifyContent: 'flex-end',
+    alignItems: 'center'
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject
+  }
+})
 const Placeholder = ({ text }) => (
   <View style={[AppStyles.container, AppStyles.containerCentered]}>
+
     <Text>{text}</Text>
   </View>
 )
